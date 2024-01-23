@@ -1,0 +1,15 @@
+{
+  "name": "sqlite-express-folders",
+  "version": "1.0.0",
+  "description": "'an extencion for sqlite-express to create folder structures'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabriel Farías",
+  "license": "ISC",
+  "dependencies": {
+    "lek-dir-object": "^1.0.0",
+    "sqlite-express": "^3.0.4"
+  }
+}
