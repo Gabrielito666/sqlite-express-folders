@@ -9,7 +9,7 @@ class SqliteExpressFolders{
         this.routeFolder = path.isAbsolute( routeFolder ) ? routeFolder : path.resolve( this.rootPath, routeFolder );
     }
     async initialize(){
-        this.lek_dir_object = new LekDirObject(this.routeFolder, this.rootPath);
+        this.lek_dir_object = new LekDirObject(this.routeFolder, this.rootPath, 'Sqlite-Express-Folders-Id-fdf3b42d-b327-4921-8520-2f69568b3bfe');
         this.lek_dir_object.setSpesificMode(['methods'])
         await this.lek_dir_object.initialize();
         this.tree = await processTree(this.lek_dir_object.tree, this);
