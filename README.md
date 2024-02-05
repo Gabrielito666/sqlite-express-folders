@@ -10,15 +10,20 @@ First install it with the following command
 npm i sqlite-express-folders
 ```
 
-to use it the first thing to do is to import the class and instantiate it. for this you will be asked for 3 parameters in an object:
+to use it the first thing to do is to import the class and instantiate it. for this you will be asked for 4 parameters in an object:
 
-- instance
+- sqlite_express_instance
+- lek_dir_object_instance
 - rootPath
 - routeFolder
 
-##### instance
+##### sqlite_express_instance
 
 In instance an instance of sqlite-express is passed if desired, the model to work needs an instance from which to call the methods of sqlite-express therefore, if you do not pass any instance by default one will be created, then you can access it through the instance property.
+
+##### lek_dir_object_instance
+
+lek-dir-object is a package developed by lek that allows the creation of objects from nested directories. sqlite-express-folders uses it for its operation. this parameter can be omitted without problems but we give the option to pass it an instance of its own if your project requires an initialization of more than one tree instance. if this is the case you will have to pass the instance and initialize it on your own. otherwise you can not pass this property and the package will work without problems.
 
 ##### rootPath
 
