@@ -1,6 +1,6 @@
 {
   "name": "sqlite-express-folders",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "'an extencion for sqlite-express to create folder structures'",
   "main": "index.js",
   "scripts": {
