@@ -10,35 +10,39 @@ First install it with the following command
 npm i sqlite-express-folders
 ```
 
-to use it the first thing to do is to import the class and instantiate it. for this you will be asked for 4 parameters in an object:
+to use it the first thing to do is to import the function and use it. for this you will be asked for 4 parameters in an object:
 
-- sqlite_express_instance
-- lek_dir_object_instance
-- rootPath
-- routeFolder
+- sqlite_express
+- createTree
+- root
+- route
 
-##### sqlite_express_instance
+##### sqlite_express
 
-In instance an instance of sqlite-express is passed if desired, the model to work needs an instance from which to call the methods of sqlite-express therefore, if you do not pass any instance by default one will be created, then you can access it through the instance property.
+In instance an instance of sqlite-express is passed if desired, the model to work needs an instance from which to call the methods of sqlite-express therefore, if you do not pass any instance by default one will be created, then you can access it through the instance property. The function returns an object with getTree and with sqlite_express_instance, so you can access the instance of sqlite_express whether you have provided one or not.
 
-##### lek_dir_object_instance
+##### createTree
 
-lek-dir-object is a package developed by lek that allows the creation of objects from nested directories. sqlite-express-folders uses it for its operation. this parameter can be omitted without problems but we give the option to pass it an instance of its own if your project requires an initialization of more than one tree instance. if this is the case you will have to pass the instance and initialize it on your own. otherwise you can not pass this property and the package will work without problems.
+lek-dir-object is a package developed by lek that allows the creation of objects from nested directories. sqlite-express-folders uses it for its operation. this parameter can be omitted without problems but we give the option to pass it an instance of its own if your project requires an initialization of more than one tree instance. if this is the case you will have to pass the createTree function. otherwise you can not pass this property and the package will work without problems.
 
-##### rootPath
+##### root
 
-In the case of rootPath an absolute directory is needed which will be used as root to access the relative paths requested by the system. In the case of passing an instance in the instance parameter, rootPath will not be necessary, however if you decide to use the default value of instance it is essential that you enter the rootPath parameter with the absolute path that you want, which is usually __dirname.
-##### routeFolder
+In the case of root an absolute directory is needed which will be used as root to access the relative paths requested by the system. In the case of passing an instance in the instance parameter, rootPath will not be necessary, however if you decide to use the default value of instance it is essential that you enter the rootPath parameter with the absolute path that you want, which is usually __dirname.
 
-This parameter is mandatory and must correspond to a relative path (relative to the rootPath or to the directory from which you are nesting the instance in case you have not set rootPath) and must correspond to the path you are going to use to nest your methods.
+##### route
+
+This parameter is mandatory and must correspond to a relative path (relative to the rootPath or to the directory from which you are nesting the instance in case you have not set root) and must correspond to the path you are going to use to nest your methods.
 
 example:
 
 ```javascript
 //main folder
-const SqliteExpressFolders = require('sqlite-express-folders');
+const sqliteExpressFolders = require('sqlite-express-folders');
 
-const session = new SqliteExpressFolders({ rootPath : __dirname, routeFolder : './my_methods' });
+const {
+    sqlite_express_instance,
+    getTree
+} = sqliteExpressFolders({ rootPath : __dirname, routeFolder : './my_methods' });
 ```
 
 ## Folders
@@ -92,21 +96,16 @@ const methods = async sqliteExpress => {
 module.exports = methods;
 ```
 
-## initialization
-
-Finally for the system to function the instance must be initialized. the initialization is asynchronous so before using it an await or a .then must be done.
-
-Example:
 
 ```javascript
 //main folder
-const SqliteExpressFolders = require('sqlite-express-folders');
+const sqliteExpressFolders = require('sqlite-express-folders');
 
-const session = new SqliteExpressFolders({ rootPath : __dirname, routeFolder : './my_methods' });
+const { getTree } = sqliteExpressFolders({ root : __dirname, route : './my_methods' });
 
 (async () => {
-    await session.initialize();
-    console.log(session.tree);
+    const tree = await getTree();
+    console.log(tree);
 })()
 
 ```
@@ -137,13 +136,13 @@ module.exports = methods;
 
 ```javascript
 //main folder
-const SqliteExpressFolders = require('sqlite-express-folders');
+const sqliteExpressFolders = require('sqlite-express-folders');
 
-const session = new SqliteExpressFolders({ rootPath : __dirname, routeFolder : './my_methods' });
+const { getTree } = sqliteExpressFolders({ rootPath : __dirname, routeFolder : './my_methods' });
 
 (async () => {
-    await session.initialize();
-    console.log(session.tree);
+    const tree = await getTree();
+    console.log(tree);
 
     const { method_1, method_2 } = session.tree;
 
