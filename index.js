@@ -11,15 +11,18 @@ const sqliteExpressFolders = async ({ sqlite_express, root, route, createTree })
     const routeFolder = path.isAbsolute( route ) ? route : path.resolve(root, route);
 
     const getTree = async () => {
-
-        const tree = await thisCreateTree({
-            route : routeFolder,
-            root : rootPath,
-            spesificItems : [ 'methods' ]
-        });
-        return await processTree(tree, sqlite_express_instance);
+        const tree = await getLekDirTree();
+        return await setTree(tree);
     };
 
-    return { sqlite_express_instance, getTree };
+    const setTree = async tree => await processTree(tree, sqlite_express_instance);
+
+    const getLekDirTree = async(route=routeFolder, root=rootPath) => await thisCreateTree({
+        route,
+        root,
+        spesificItems : [ 'methods' ]
+    });
+
+    return { sqlite_express_instance, getTree, setTree, getLekDirTree };
 };
 module.exports = sqliteExpressFolders;

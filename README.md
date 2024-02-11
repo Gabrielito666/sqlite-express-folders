@@ -187,6 +187,14 @@ const tree = {
 
 version 2.0.0 works exactly the same for the user, but instead of importing the files dynamically, it creates a .js file for the implantations in the package itself. this is a bit slower, but saves errors in applications that use webpack like those created with next.js. if this is not your case, you should use version 1.0.1.
 
+## 4.0.1
+
+this version includes two more methods... one called setTree and another called getLekDirTree... setTree is essentially the same as getTree but it receives a directory tree as a parameter and returns the processed tree.
+
+getLekDirTree is a method that receives a route and/or a root and returns an unprocessed lek-dir-object tree (the parameters that are set by the main function will be the default values).
+
+you probably won't need to use these methods, they were created to integrate with the lek-literal-values tool in a larger framework...
+
 ## License
 
 This software is licensed under the ISC License. The ISC License is a permissive free software license, allowing for freedom to use, modify, and redistribute the software, with some conditions. For the complete terms and conditions, please see the LICENSE file in the root directory of this project.
