@@ -15,7 +15,7 @@ const sqliteExpressFolders = ({ sqlite_express, root, route, createTree }) => {
         return await setTree(tree);
     };
 
-    const setTree = async tree => processTree(tree, sqlite_express_instance);
+    const setTree = tree => processTree(tree, sqlite_express_instance);
 
     const getLekDirTree = async(route=routeFolder, root=rootPath) => await thisCreateTree({
         route,

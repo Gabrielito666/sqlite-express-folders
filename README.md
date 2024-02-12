@@ -187,7 +187,7 @@ const tree = {
 
 version 2.0.0 works exactly the same for the user, but instead of importing the files dynamically, it creates a .js file for the implantations in the package itself. this is a bit slower, but saves errors in applications that use webpack like those created with next.js. if this is not your case, you should use version 1.0.1.
 
-## 4.0.3
+## 4.0.4
 
 this version includes two more methods... one called setTree and another called getLekDirTree... setTree is essentially the same as getTree but it receives a directory tree as a parameter and returns the processed tree. (is sync)
 
